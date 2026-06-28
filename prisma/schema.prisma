@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Conversation {
+  id        String    @id @default(uuid())
+  source    String?
+  createdAt DateTime  @default(now())
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String
+  content        String
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId])
+}
+
+// ─── Council ──────────────────────────────────────────────────────────────────
+
+model CouncilSession {
+  id           String         @id @default(uuid())
+  mode         String         // 'parallel' | 'cascade'
+  agentModels  String[]       // model ids for agents [0,1,2]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  turns        CouncilTurn[]
+}
+
+model CouncilTurn {
+  id        String           @id @default(uuid())
+  sessionId String
+  session   CouncilSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question  String
+  order     Int
+  createdAt DateTime         @default(now())
+  responses CouncilMessage[]
+
+  @@index([sessionId])
+}
+
+model CouncilMessage {
+  id         String      @id @default(uuid())
+  turnId     String
+  turn       CouncilTurn @relation(fields: [turnId], references: [id], onDelete: Cascade)
+  agentIndex Int
+  model      String
+  content    String
+  createdAt  DateTime    @default(now())
+
+  @@index([turnId])
+}
+
+// ─── Prompt Library ───────────────────────────────────────────────────────────
+
+model Prompt {
+  id        String   @id @default(uuid())
+  name      String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Agent Chat ───────────────────────────────────────────────────────────────
+
+model AgentChat {
+  id         String             @id @default(uuid())
+  model      String
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+  messages   AgentChatMessage[]
+}
+
+model AgentChatMessage {
+  id        String    @id @default(uuid())
+  chatId    String
+  chat      AgentChat @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  role      String    // 'user' | 'assistant'
+  content   String
+  createdAt DateTime  @default(now())
+
+  @@index([chatId])
+}

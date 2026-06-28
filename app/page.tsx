@@ -1,17 +1,17 @@
-import Interface from '@/components/Interface';
 import O3Summary from '@/components/O3Summary';
 
 export default function HomePage() {
   const laws = [
     {
       number: 'I',
-      title: 'The Law of the Obvious',
-      text: 'The right answer is usually the most obvious one.',
+      title: 'The Law of Opposites',
+      text: 'Each cycle, the opposite happens of the previous.',
+
     },
     {
       number: 'II',
-      title: 'The Law of Opposites',
-      text: 'Each cycle, the opposite happens of the previous.',
+      title: 'The Law of the Obvious',
+      text: 'The right answer is usually the most obvious one.',
     },
     {
       number: 'III',
@@ -31,27 +31,6 @@ export default function HomePage() {
       </div>
 
       <section className="relative z-10 mx-auto min-h-screen max-w-6xl px-6 py-8">
-        {/* header */}
-        <header className="flex items-center justify-between border-b border-[#b1844f]/25 pb-5">
-          <div>
-            <div className="font-[family-name:var(--font-cinzel)] text-3xl tracking-[0.08em] text-[#d6b274]">
-              PANTEON
-            </div>
-            <div className="mt-1 font-[family-name:var(--font-plex)] text-[9px] uppercase tracking-[0.52em] text-[#81745e]">
-              O3 · Study of Change
-            </div>
-          </div>
-
-          <div className="hidden font-[family-name:var(--font-plex)] text-[10px] uppercase tracking-[0.4em] text-[#81745e] md:block">
-            Obvious · Opposites · Outliers
-          </div>
-        </header>
-
-        {/* interface — primary component */}
-        <div className="mt-8">
-          <Interface />
-        </div>
-
         {/* laws */}
         <section className="grid gap-4 border-t border-[#b1844f]/25 pt-6 mt-8 md:grid-cols-3">
           {laws.map((law) => (
@@ -74,17 +53,7 @@ export default function HomePage() {
           ))}
         </section>
 
-        {/* bottom inscription */}
-        <section className="mt-8 border border-[#b1844f]/20 bg-[#0f0e0c]/80 p-7">
-          <div className="font-[family-name:var(--font-plex)] text-[10px] uppercase tracking-[0.5em] text-[#a4774c]">
-            Central Question
-          </div>
 
-          <p className="mt-5 max-w-3xl font-[family-name:var(--font-cormorant)] text-2xl leading-9 text-[#d7ccb4]">
-            What is still being dismissed as anomaly that will
-            eventually become the structure?
-          </p>
-        </section>
       </section>
     </main>
   );

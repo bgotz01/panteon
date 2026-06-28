@@ -3,17 +3,17 @@
 const rows = [
     {
         code: 'O1',
-        primary: 'Obvious',
-        words: ['Signal', 'Incentives'],
-        meaning:
-            'What is already driving behavior beneath the surface, and eventually becomes impossible to ignore.',
-    },
-    {
-        code: 'O2',
         primary: 'Opposites',
         words: ['Swing', 'Inversion'],
         meaning:
             'The reversal that happens when a system is pushed far enough to become its opposite.',
+    },
+    {
+        code: 'O2',
+        primary: 'Obvious',
+        words: ['Signal', 'Incentives'],
+        meaning:
+            'What is already driving behavior beneath the surface, and eventually becomes impossible to ignore.',
     },
     {
         code: 'O3',

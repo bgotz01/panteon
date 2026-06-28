@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import { Cinzel, Cormorant_Garamond, IBM_Plex_Sans } from 'next/font/google';
+import { ChatProvider } from '@/components/ChatContext';
+import Navbar from '@/components/Navbar';
+import ChatModal from '@/components/ChatModal';
 import './globals.css';
 
 const cinzel = Cinzel({
@@ -35,7 +38,16 @@ export default function RootLayout({
       lang="en"
       className={`${cinzel.variable} ${cormorant.variable} ${plex.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <ChatProvider>
+          <Navbar />
+          {/* offset for fixed navbar height */}
+          <div className="pt-[57px]">
+            {children}
+          </div>
+          <ChatModal />
+        </ChatProvider>
+      </body>
     </html>
   );
 }

@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
+/* ─── Panteon color tokens ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* backgrounds */
+  --color-void: #0b0a08;
+  /* page background */
+  --color-surface: #0f0e0c;
+  /* panel / card surface */
+  --color-surface-alt: #100f0d;
+  /* slightly lighter surface */
+
+  /* gold / amber scale — primary accent */
+  --color-gold: #d6b274;
+  /* headings, main accent */
+  --color-gold-muted: #b1844f;
+  /* borders, dividers */
+  --color-gold-dim: #a4774c;
+  /* labels, tags */
+
+  /* parchment / text scale */
+  --color-parchment: #e9dec4;
+  /* primary text */
+  --color-parchment-2: #eadfca;
+  /* hover text */
+  --color-parchment-3: #d7ccb4;
+  /* body / assistant text */
+  --color-parchment-4: #b9ad94;
+  /* user message text */
+  --color-stone: #a79c86;
+  /* secondary body text */
+  --color-muted: #81745e;
+  /* placeholder, captions */
 }
 
+/* ─── Register tokens with Tailwind ────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-background: var(--color-void);
+  --color-foreground: var(--color-parchment);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* surfaces */
+  --color-void: var(--color-void);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+
+  /* gold */
+  --color-gold: var(--color-gold);
+  --color-gold-muted: var(--color-gold-muted);
+  --color-gold-dim: var(--color-gold-dim);
+
+  /* parchment */
+  --color-parchment: var(--color-parchment);
+  --color-parchment-2: var(--color-parchment-2);
+  --color-parchment-3: var(--color-parchment-3);
+  --color-parchment-4: var(--color-parchment-4);
+  --color-stone: var(--color-stone);
+  --color-muted: var(--color-muted);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-void);
+  color: var(--color-parchment);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ─── Council markdown prose ────────────────────────────────────────── */
+.prose-council p {
+  margin: 0 0 0.75em;
+}
+
+.prose-council p:last-child {
+  margin-bottom: 0;
+}
+
+.prose-council strong {
+  color: #eadfca;
+  font-weight: 600;
+}
+
+.prose-council em {
+  color: #c9a96e;
+  font-style: italic;
+}
+
+.prose-council h1,
+.prose-council h2,
+.prose-council h3 {
+  font-family: var(--font-cinzel), serif;
+  color: #d6b274;
+  letter-spacing: 0.04em;
+  margin: 1em 0 0.4em;
+  font-weight: 400;
+}
+
+.prose-council h1 {
+  font-size: 1.15rem;
+}
+
+.prose-council h2 {
+  font-size: 1.05rem;
+}
+
+.prose-council h3 {
+  font-size: 0.95rem;
+}
+
+.prose-council ul,
+.prose-council ol {
+  margin: 0.5em 0 0.75em 1.25em;
+  padding: 0;
+}
+
+.prose-council li {
+  margin-bottom: 0.25em;
+}
+
+.prose-council ul>li {
+  list-style-type: disc;
+}
+
+.prose-council ol>li {
+  list-style-type: decimal;
+}
+
+.prose-council code {
+  font-family: var(--font-plex), monospace;
+  font-size: 0.82em;
+  background: #1a1810;
+  color: #c9a96e;
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+
+.prose-council pre {
+  background: #1a1810;
+  border: 1px solid rgba(177, 132, 79, 0.2);
+  padding: 0.85em 1em;
+  overflow-x: auto;
+  margin: 0.75em 0;
+}
+
+.prose-council pre code {
+  background: transparent;
+  padding: 0;
+  color: #d7ccb4;
+  font-size: 0.82em;
+}
+
+.prose-council blockquote {
+  border-left: 2px solid rgba(177, 132, 79, 0.35);
+  margin: 0.5em 0;
+  padding-left: 1em;
+  color: #a79c86;
+  font-style: italic;
+}
+
+.prose-council hr {
+  border: none;
+  border-top: 1px solid rgba(177, 132, 79, 0.2);
+  margin: 1em 0;
+}
+
+.prose-council a {
+  color: #c9a96e;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 169, 110, 0.4);
+}
+
+.prose-council a:hover {
+  color: #e4c98a;
 }

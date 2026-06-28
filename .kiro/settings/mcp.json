@@ -1,0 +1,19 @@
+{
+    "mcpServers": {
+        "postgres": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-postgresql"
+            ],
+            "env": {
+                "PG_HOST": "localhost",
+                "PG_PORT": "5432",
+                "PG_USER": "borisgotzev",
+                "PG_PASSWORD": "koinare",
+                "PG_DATABASE": "panteon"
+            },
+            "disabled": false,
+            "autoApprove": []
+        }
+    }
+}
